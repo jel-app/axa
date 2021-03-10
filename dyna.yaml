@@ -16,6 +16,10 @@ hs_token: ugw8243igya57aaABGFfgeyu
 
 # this is the local part of the desired user ID for this AS (in this case @logging:localhost)
 sender_localpart: dyna
+
+# Disable rate limiting
+rate_limited: false
+
 namespaces:
   users: []
   rooms: []
