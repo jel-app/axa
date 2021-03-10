@@ -4,7 +4,7 @@
 id: "dyna"
 
 # this is the base URL of the application service
-url: "https://hubs.local:4000"
+url: null
 
 # This is the token that the AS should use as its access_token when using the Client-Server API
 # This can be anything you want.
@@ -19,4 +19,6 @@ sender_localpart: dyna
 namespaces:
   users: []
   rooms: []
-  aliases: []
+  aliases:
+    - regex: ".*"
+      exclusive: false
