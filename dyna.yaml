@@ -21,8 +21,10 @@ sender_localpart: dyna
 rate_limited: false
 
 namespaces:
-  users: []
+  users: 
+    - regex: ".*"
+      exclusive: false
   rooms: []
   aliases:
-    - regex: ".*"
+    - regex: "jel_.*"
       exclusive: false
