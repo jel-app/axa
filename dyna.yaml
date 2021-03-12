@@ -22,9 +22,9 @@ rate_limited: false
 
 namespaces:
   users: 
-    - regex: ".*"
+    - regex: "@jel_.*"
       exclusive: false
   rooms: []
   aliases:
-    - regex: "jel_.*"
+    - regex: ".*"
       exclusive: false
