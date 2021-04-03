@@ -8,11 +8,11 @@ url: null
 
 # This is the token that the AS should use as its access_token when using the Client-Server API
 # This can be anything you want.
-as_token: wfghWEGh3wgWHEf3478sHFWE
+as_token: {{ cfg.secrets.dyna_as_token }}
 
 # This is the token that the HS will use when sending requests to the AS.
 # This can be anything you want.
-hs_token: ugw8243igya57aaABGFfgeyu
+hs_token: {{ cfg.secrets.dyna_hs_token }}
 
 # this is the local part of the desired user ID for this AS (in this case @logging:localhost)
 sender_localpart: dyna

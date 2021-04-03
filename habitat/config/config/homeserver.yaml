@@ -26,11 +26,11 @@
 # lowercase and may contain an explicit port.
 # Examples: matrix.org, localhost:8080
 #
-server_name: {{ cfg.general.server_name }}
+server_name: "{{ cfg.general.server_name }}"
 
 # When running as a daemon, the file to store the pid in
 #
-pid_file: {{ pkg.svc_var_path }}/homeserver.pid
+pid_file: "{{ pkg.svc_var_path }}/homeserver.pid"
 
 # The absolute URL to the web client which /_matrix/client will redirect
 # to if 'webclient' is configured under the 'listeners' configuration.
@@ -40,7 +40,7 @@ pid_file: {{ pkg.svc_var_path }}/homeserver.pid
 # under the 'listeners' configuration, however this is a security risk:
 # https://github.com/matrix-org/synapse#security-note
 #
-web_client_location: {{ cfg.general.web_client_location }}
+web_client_location: "{{ cfg.general.web_client_location }}"
 
 # The public-facing base URL that clients use to access this Homeserver (not
 # including _matrix/...). This is the same URL a user might enter into the
@@ -49,7 +49,7 @@ web_client_location: {{ cfg.general.web_client_location }}
 # Otherwise, it should be the URL to reach Synapse's client HTTP listener (see
 # 'listeners' below).
 #
-public_baseurl: {{ cfg.general.public_baseurl }}
+public_baseurl: "{{ cfg.general.public_baseurl }}"
 
 # Set the soft limit on the number of file descriptors synapse can use
 # Zero is used to indicate synapse should set the soft limit to the
@@ -293,7 +293,7 @@ listeners:
 
 # How to reach the server admin, used in ResourceLimitError
 #
-admin_contact: {{ cfg.general.admin_contact }}
+admin_contact: "{{ cfg.general.admin_contact }}"
 
 # Global blocking
 #
@@ -762,10 +762,10 @@ caches:
 database:
   name: psycopg2
   args:
-    user: {{ cfg.db.user }}
-    password: {{ cfg.db.password }}
-    database: {{ cfg.db.databaes }}
-    host: {{ cfg.db.host }}
+    user: "{{ cfg.db.user }}"
+    password: "{{ cfg.db.password }}"
+    database: "{{ cfg.db.database }}"
+    host: "{{ cfg.db.host }}"
     cp_min: {{ cfg.db.pool_min }}
     cp_max: {{ cfg.db.pool_max }}
 #
@@ -782,7 +782,7 @@ database:
 # A yaml python logging config file as described by
 # https://docs.python.org/3.7/library/logging.config.html#configuration-dictionary-schema
 #
-log_config: {{ pkg.svc_var_path }}/synapse.log
+log_config: "{{ pkg.svc_config_path }}/log.config"
 
 
 ## Ratelimiting ##
@@ -1234,7 +1234,7 @@ account_validity:
 # If set, allows registration of standard or admin accounts by anyone who
 # has the shared secret, even if registration is otherwise disabled.
 #
-registration_shared_secret: {{ cfg.general.registration_shared_secret }}
+registration_shared_secret: "{{ cfg.secrets.registration_shared_secret }}"
 
 # Set the number of bcrypt rounds used to generate password hash.
 # Larger numbers increase the work factor needed to generate the hash.
@@ -1439,8 +1439,8 @@ report_stats: false
 # A list of application service config files to use
 #
 app_service_config_files:
-  - dyna.yaml
-  - dyna_admin.yaml
+  - {{ pkg.svc_config_path }}/config/dyna.yaml
+  - {{ pkg.svc_config_path }}/config/dyna_admin.yaml
 #  - app_service_2.yaml
 
 # Uncomment to enable tracking of application service IP addresses. Implicitly
@@ -1453,13 +1453,13 @@ app_service_config_files:
 # the registration_shared_secret is used, if one is given; otherwise,
 # a secret key is derived from the signing key.
 #
-macaroon_secret_key: {{ cfg.general.macaroon_secret_key }}
+macaroon_secret_key: "{{ cfg.secrets.macaroon_secret_key }}"
 
 # a secret which is used to calculate HMACs for form values, to stop
 # falsification of values. Must be specified for the User Consent
 # forms to work.
 #
-form_secret: {{ cfg.general.form_secret }}
+form_secret: "{{ cfg.secrets.form_secret }}"
 
 ## Signing Keys ##
 
@@ -1528,13 +1528,13 @@ old_signing_keys:
 #      "ed25519:auto": "abcdefghijklmnopqrstuvwxyzabcdefghijklmopqr"
 #  - server_name: "my_other_trusted_server.example.com"
 #
-#trusted_key_servers:
-#  - server_name: "matrix.org"
+trusted_key_servers:
+  - server_name: "matrix.org"
 
 # Uncomment the following to disable the warning that is emitted when the
 # trusted_key_servers include 'matrix.org'. See above.
 #
-#suppress_key_server_warning: true
+suppress_key_server_warning: true
 
 # The signing keys to use when acting as a trusted key server. If not specified
 # defaults to the server signing key.
@@ -2135,7 +2135,7 @@ jwt_config:
     #
     # Required if 'enabled' is true.
     #
-    secret: {{ cfg.general.jwt_secret }}
+    secret: "{{ cfg.secrets.jwt_secret }}"
 
     # The algorithm used to sign the JSON web token.
     #

@@ -1,0 +1,5 @@
+#!{{pkgPathFor "core/bash"}}/bin/bash
+exec 2>&1
+
+source "{{ pkg.path }}/bin/activate"
+exec "{{ pkg.path }}/bin/synctl" --no-daemonize start "{{ pkg.svc_config_path }}/config"
