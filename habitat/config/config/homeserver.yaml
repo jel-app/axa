@@ -252,11 +252,11 @@ listeners:
   # If you plan to use a reverse proxy, please see
   # https://github.com/matrix-org/synapse/blob/master/docs/reverse_proxy.md.
   #
-  #- port: 8008
-  #  tls: false
-  #  type: http
-  #  x_forwarded: true
-  #  bind_addresses: ['::1', '127.0.0.1']
+  - port: 8080
+    tls: false
+    type: http
+    x_forwarded: true
+    bind_addresses: ['127.0.0.1', '{{ cfg.general.http_listening_ip }}']
 
   #  resources:
   #    - names: [client, federation]
