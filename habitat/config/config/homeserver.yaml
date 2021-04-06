@@ -119,7 +119,7 @@ filter_timeline_limit: 1000
 # Whether room invites to users on this server should be blocked
 # (except those sent by local server admins). The default is False.
 #
-block_non_admin_invites: true
+# block_non_admin_invites: true
 
 # Room searching
 #
